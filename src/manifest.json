@@ -15,11 +15,14 @@
     "page": "options/index.html",
     "chrome_style": true
   },
+  "browser_action": {
+    "default_popup": "popup/index.html"
+  },
   "content_scripts": [
     {
       "matches": ["http://*/*", "https://*/*"],
-      "js": ["./contentscripts/index.js"],
-      "css": ["./contentscripts/index.css"],
+      "js": ["./contentScripts/index.js"],
+      "css": ["./contentScripts/index.css"],
       "run_at": "document_start",
       "all_frames": true
     }
