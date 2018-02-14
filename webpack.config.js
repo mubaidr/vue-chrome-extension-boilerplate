@@ -2,6 +2,7 @@ const webpack = require('webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const WebpackShellPlugin = require('webpack-shell-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+const ChromeExtensionReloader = require('webpack-chrome-extension-reloader')
 
 const config = {
   context: `${__dirname}/src`,
@@ -90,6 +91,17 @@ if (process.env.NODE_ENV === 'production') {
     }),
     new webpack.LoaderOptionsPlugin({
       minimize: true
+    })
+  ])
+} else {
+  config.plugins = (config.plugins || []).concat([
+    new ChromeExtensionReloader({
+      entries: {
+        background: './background.js',
+        options: './options/index.js',
+        popup: './popup/index.js',
+        contentScript: './contentScripts/index.js'
+      }
     })
   ])
 }
