@@ -4,7 +4,9 @@
   "manifest_version": 2,
   "description": "vue-chrome-extension-boilerplate",
   "icons": {
-    "16": "assets/icons/icon_48.png",
+    "16": "assets/icons/icon_16.png",
+    "32": "assets/icons/icon_32.png",
+    "64": "assets/icons/icon_64.png",
     "128": "assets/icons/icon_128.png"
   },
   "background": {
