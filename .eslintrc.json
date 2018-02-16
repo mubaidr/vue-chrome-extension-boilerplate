@@ -8,12 +8,12 @@
   "parserOptions": {
     "ecmaVersion": 6,
     "ecmaFeatures": {
-      "jsx": true,
       "experimentalObjectRestSpread": true
     },
     "sourceType": "module"
   },
-  "extends": ["airbnb", "prettier"],
+  "plugins": ["vue"],
+  "extends": ["airbnb", "plugin:vue/recommended", "prettier"],
   "rules": {
     "linebreak-style": "off",
     "no-console": "off"
@@ -23,6 +23,5 @@
     "window": true,
     "chrome": true,
     "Vue": true
-  },
-  "plugins": ["vue"]
+  }
 }
