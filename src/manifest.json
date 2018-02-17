@@ -12,7 +12,7 @@
   "background": {
     "scripts": ["background.js"]
   },
-  "permissions": ["http://*/*", "https://*/*", "background", "storage", "tabs"],
+  "permissions": ["http://*/*", "https://*/*", "background", "storage", "tabs", "webRequest"],
   "options_ui": {
     "page": "options/index.html",
     "chrome_style": true

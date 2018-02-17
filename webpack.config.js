@@ -1,53 +1,37 @@
 const webpack = require('webpack')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const WebpackShellPlugin = require('webpack-shell-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const ChromeExtensionReloader = require('webpack-chrome-extension-reloader')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 const config = {
   context: `${__dirname}/src`,
   entry: {
-    background: './background.js',
-    'options/index': './options/index.js',
-    'popup/index': './popup/index.js',
-    'contentScripts/index': './contentScripts/index.js'
+    background: './background',
+    options: './options',
+    popup: './popup',
+    contentScripts: './contentScripts'
   },
   output: {
     path: `${__dirname}/dist`,
-    filename: '[name].js'
+    filename: '[name]/index.js'
   },
   resolve: {
-    extensions: ['.js', '.vue']
+    extensions: ['.js']
   },
   module: {
     loaders: [
       {
         test: /\.vue$/,
-        loaders: 'vue-loader',
-        options: {
-          loaders: {
-            scss: ExtractTextPlugin.extract({
-              use: 'css-loader!sass-loader',
-              fallback: 'vue-style-loader'
-            }),
-            sass: ExtractTextPlugin.extract({
-              use: 'css-loader!sass-loader?indentedSyntax',
-              fallback: 'vue-style-loader'
-            })
-          }
-        }
-      },
-      {
-        test: /\.js$/,
-        loader: 'babel-loader',
-        exclude: /node_modules/
+        loaders: 'vue-loader'
       },
       {
         test: /\.css$/,
-        use: ExtractTextPlugin.extract({
-          use: 'css-loader',
-          fallback: 'vue-loader'
-        })
+        loader: 'css-loader'
+      },
+      {
+        test: /\.styl$/,
+        loader: 'style-loader!css-loader!stylus-loader'
       },
       {
         test: /\.(png|jpg|gif|svg|ico)$/,
@@ -59,9 +43,6 @@ const config = {
     ]
   },
   plugins: [
-    new ExtractTextPlugin({
-      filename: '[name].css'
-    }),
     new CopyWebpackPlugin([
       { from: 'assets', to: 'assets' },
       { from: 'options/index.html', to: 'options/index.html' },
@@ -83,12 +64,7 @@ if (process.env.NODE_ENV === 'production') {
         NODE_ENV: '"production"'
       }
     }),
-    new webpack.optimize.UglifyJsPlugin({
-      sourceMap: false,
-      compress: {
-        warnings: false
-      }
-    }),
+    new UglifyJsPlugin(),
     new webpack.LoaderOptionsPlugin({
       minimize: true
     })
@@ -97,10 +73,10 @@ if (process.env.NODE_ENV === 'production') {
   config.plugins = (config.plugins || []).concat([
     new ChromeExtensionReloader({
       entries: {
-        background: './background.js',
-        options: './options/index.js',
-        popup: './popup/index.js',
-        contentScript: './contentScripts/index.js'
+        background: 'background',
+        options: 'options',
+        popup: 'popup',
+        contentScripts: 'contentScripts'
       }
     })
   ])

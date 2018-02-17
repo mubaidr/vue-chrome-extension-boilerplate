@@ -1,3 +1,3 @@
-import './index.css'
+import './index.styl'
 
 console.log('Content script working...')
