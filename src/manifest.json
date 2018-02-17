@@ -10,23 +10,29 @@
     "128": "assets/icons/icon_128.png"
   },
   "background": {
-    "scripts": ["background.js"]
+    "scripts": ["./background/index.js"]
   },
-  "permissions": ["http://*/*", "https://*/*", "background", "storage", "tabs", "webRequest"],
+  "permissions": [
+    "http://*/*",
+    "https://*/*",
+    "background",
+    "storage",
+    "tabs",
+    "webRequest"
+  ],
   "options_ui": {
-    "page": "options/index.html",
+    "page": "./options/index.html",
     "chrome_style": true
   },
   "browser_action": {
-    "default_popup": "popup/index.html"
+    "default_popup": "./popup/index.html"
   },
   "content_scripts": [
     {
       "matches": ["http://*/*", "https://*/*"],
       "js": ["./contentScripts/index.js"],
-      "css": ["./contentScripts/index.css"],
-      "run_at": "document_start",
-      "all_frames": true
+      "run_at": "document_end",
+      "all_frames": false
     }
   ]
 }
