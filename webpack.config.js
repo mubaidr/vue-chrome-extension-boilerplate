@@ -20,21 +20,21 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.css$/,
-        use: ['vue-style-loader', 'css-loader']
-      },
-      {
         test: /\.vue$/,
-        loader: 'vue-loader',
-        options: {
-          loaders: {}
-          // other vue-loader options go here
-        }
+        loader: 'vue-loader'
       },
       {
         test: /\.js$/,
         loader: 'babel-loader',
         exclude: /node_modules/
+      },
+      {
+        test: /\.styl$/,
+        use: ['style-loader', 'css-loader', 'stylus-loader']
+      },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
       },
       {
         test: /\.(png|jpg|gif|svg)$/,
@@ -47,20 +47,17 @@ module.exports = {
   },
   resolve: {
     alias: {
-      vue$: 'vue/dist/vue.esm.js'
+      vue$: 'vue/dist/vue.runtime.esm.js'
     },
-    extensions: ['*', '.js', '.vue', '.json']
+    extensions: ['.js']
   },
-  devServer: {
-    historyApiFallback: true,
-    noInfo: true,
-    overlay: true
-  },
-  performance: {
-    hints: false
-  },
-  devtool: '#eval-source-map',
   plugins: [
+    new CopyWebpackPlugin([
+      { from: 'assets', to: 'assets' },
+      { from: 'options/index.html', to: 'options/index.html' },
+      { from: 'popup/index.html', to: 'popup/index.html' },
+      { from: 'manifest.json', to: 'manifest.json' }
+    ]),
     new WebpackShellPlugin({
       onBuildEnd: ['node scripts/remove-evals.js']
     })
@@ -89,12 +86,6 @@ if (process.env.NODE_ENV === 'production') {
   ])
 } else {
   module.exports.plugins = (module.exports.plugins || []).concat([
-    new CopyWebpackPlugin([
-      { from: 'assets', to: 'assets' },
-      { from: 'options/index.html', to: 'options/index.html' },
-      { from: 'popup/index.html', to: 'popup/index.html' },
-      { from: 'manifest.json', to: 'manifest.json' }
-    ]),
     new ChromeExtensionReloader({
       entries: {
         background: 'background',

@@ -10,11 +10,7 @@ export default {
     return {
       msg: 'Welcome!'
     }
-  },
-  created() {
-    console.log('View initialized')
-  },
-  methods: {}
+  }
 }
 </script>
 

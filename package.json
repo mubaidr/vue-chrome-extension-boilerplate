@@ -4,7 +4,8 @@
   "description": "vue-chrome-extension-boilerplate",
   "author": "Muhammad Ubaid Raza <mubaidr@gmail.com>",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --hot",
+    "dev":
+      "cross-env NODE_ENV=development webpack --progress --hide-modules --hot --watch",
     "build":
       "cross-env NODE_ENV=production webpack --progress --hide-modules && node scripts/build-zip.js"
   },
