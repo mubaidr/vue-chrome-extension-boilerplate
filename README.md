@@ -9,5 +9,5 @@ Boilerplate for Chrome extension using Vue.js and Webpack with hot reloading ena
 npm run build
 
 // Start hot reloading server from dist/
-npm run watch
+npm run dev
 ```
