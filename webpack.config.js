@@ -2,20 +2,24 @@ const path = require('path')
 const webpack = require('webpack')
 const WebpackShellPlugin = require('webpack-shell-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
 const ChromeExtensionReloader = require('webpack-chrome-extension-reloader')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   context: path.resolve(__dirname, './src'),
   entry: {
+    vue: 'vue/dist/vue.runtime.esm.js',
+    bulma: 'bulma/css/bulma.css',
     background: './background/index.js',
     options: './options/index.js',
     popup: './popup/index.js',
-    contentScripts: './contentScripts/index.js'
+    'contentScripts/index': './contentScripts/index.js'
   },
   output: {
     path: path.resolve(__dirname, './dist'),
-    publicPath: '/dist/',
-    filename: '[name]/index.js'
+    publicPath: '.',
+    filename: '[name].js'
   },
   module: {
     rules: [
@@ -47,27 +51,41 @@ module.exports = {
   },
   resolve: {
     alias: {
-      vue$: 'vue/dist/vue.runtime.esm.js'
+      vue$: 'vue/dist/vue.runtime.esm.js',
+      bulma$: 'bulma/css/bulma.css'
     },
     extensions: ['.js']
   },
   plugins: [
+    new CleanWebpackPlugin(['./dist/', './dist-zip/']),
     new CopyWebpackPlugin([
       { from: 'assets', to: 'assets' },
-      { from: 'options/index.html', to: 'options/index.html' },
-      { from: 'popup/index.html', to: 'popup/index.html' },
-      { from: 'manifest.json', to: 'manifest.json' }
+      { from: 'manifest.json', to: 'manifest.json', flatten: true }
     ]),
     new WebpackShellPlugin({
       onBuildEnd: ['node scripts/remove-evals.js']
+    }),
+    new HtmlWebpackPlugin({
+      title: 'Options',
+      template: './index.html',
+      inject: true,
+      chunks: ['bulma', 'vue', 'options'],
+      filename: 'options.html'
+    }),
+    new HtmlWebpackPlugin({
+      title: 'Popup',
+      template: './index.html',
+      inject: true,
+      chunks: ['bulma', 'vue', 'popup'],
+      filename: 'popup.html'
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+      names: ['vue', 'bulma']
     })
   ]
 }
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports.devtool = '#source-map'
-
-  // http://vue-loader.vuejs.org/en/workflow/production.html
   module.exports.plugins = (module.exports.plugins || []).concat([
     new webpack.DefinePlugin({
       'process.env': {
@@ -86,12 +104,13 @@ if (process.env.NODE_ENV === 'production') {
   ])
 } else {
   module.exports.plugins = (module.exports.plugins || []).concat([
+    new webpack.HotModuleReplacementPlugin(),
     new ChromeExtensionReloader({
       entries: {
         background: 'background',
         options: 'options',
         popup: 'popup',
-        contentScripts: 'contentScripts'
+        contentScripts: 'contentScripts/index'
       }
     })
   ])

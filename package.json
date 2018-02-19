@@ -4,10 +4,8 @@
   "description": "vue-chrome-extension-boilerplate",
   "author": "Muhammad Ubaid Raza <mubaidr@gmail.com>",
   "scripts": {
-    "dev":
-      "cross-env NODE_ENV=development webpack --progress --hide-modules --hot --watch",
-    "build":
-      "cross-env NODE_ENV=production webpack --progress --hide-modules && node scripts/build-zip.js"
+    "dev": "cross-env NODE_ENV=development webpack --progress --hide-modules --hot --watch",
+    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules && node scripts/build-zip.js"
   },
   "dependencies": {
     "bulma": "0.6.2",
@@ -18,6 +16,8 @@
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.0",
     "babel-preset-stage-3": "^6.24.1",
+    "clean-webpack-plugin": "^0.1.18",
+    "html-webpack-plugin": "^2.30.1",
     "copy-webpack-plugin": "^4.4.1",
     "cross-env": "^5.0.5",
     "css-loader": "^0.28.7",
@@ -29,6 +29,7 @@
     "eslint-plugin-vue": "^4.2.2",
     "eslint": "^4.18.0",
     "file-loader": "^1.1.4",
+    "style-loader": "^0.20.2",
     "stylus-loader": "^3.0.1",
     "stylus": "^0.54.5",
     "uglifyjs-webpack-plugin": "^1.2.0",
