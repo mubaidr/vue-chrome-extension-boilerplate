@@ -1,54 +1,66 @@
+const path = require('path')
 const webpack = require('webpack')
 const WebpackShellPlugin = require('webpack-shell-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const ChromeExtensionReloader = require('webpack-chrome-extension-reloader')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
-const config = {
-  context: `${__dirname}/src`,
+module.exports = {
+  context: path.resolve(__dirname, './src'),
   entry: {
-    background: './background',
-    options: './options',
-    popup: './popup',
-    contentScripts: './contentScripts'
+    background: './background/index.js',
+    options: './options/index.js',
+    popup: './popup/index.js',
+    contentScripts: './contentScripts/index.js'
   },
   output: {
-    path: `${__dirname}/dist`,
+    path: path.resolve(__dirname, './dist'),
+    publicPath: '/dist/',
     filename: '[name]/index.js'
   },
-  resolve: {
-    extensions: ['.js']
-  },
   module: {
-    loaders: [
-      {
-        test: /\.vue$/,
-        loaders: 'vue-loader'
-      },
+    rules: [
       {
         test: /\.css$/,
-        loader: 'css-loader'
+        use: ['vue-style-loader', 'css-loader']
       },
       {
-        test: /\.styl$/,
-        loader: 'style-loader!css-loader!stylus-loader'
+        test: /\.vue$/,
+        loader: 'vue-loader',
+        options: {
+          loaders: {}
+          // other vue-loader options go here
+        }
       },
       {
-        test: /\.(png|jpg|gif|svg|ico)$/,
+        test: /\.js$/,
+        loader: 'babel-loader',
+        exclude: /node_modules/
+      },
+      {
+        test: /\.(png|jpg|gif|svg)$/,
         loader: 'file-loader',
         options: {
-          name: '[name].[ext]?emitFile=false'
+          name: '[name].[ext]?[hash]'
         }
       }
     ]
   },
+  resolve: {
+    alias: {
+      vue$: 'vue/dist/vue.esm.js'
+    },
+    extensions: ['*', '.js', '.vue', '.json']
+  },
+  devServer: {
+    historyApiFallback: true,
+    noInfo: true,
+    overlay: true
+  },
+  performance: {
+    hints: false
+  },
+  devtool: '#eval-source-map',
   plugins: [
-    new CopyWebpackPlugin([
-      { from: 'assets', to: 'assets' },
-      { from: 'options/index.html', to: 'options/index.html' },
-      { from: 'popup/index.html', to: 'popup/index.html' },
-      { from: 'manifest.json', to: 'manifest.json' }
-    ]),
     new WebpackShellPlugin({
       onBuildEnd: ['node scripts/remove-evals.js']
     })
@@ -56,21 +68,33 @@ const config = {
 }
 
 if (process.env.NODE_ENV === 'production') {
-  config.devtool = false
+  module.exports.devtool = '#source-map'
 
-  config.plugins = (config.plugins || []).concat([
+  // http://vue-loader.vuejs.org/en/workflow/production.html
+  module.exports.plugins = (module.exports.plugins || []).concat([
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: '"production"'
       }
     }),
-    new UglifyJsPlugin(),
+    new webpack.optimize.UglifyJsPlugin({
+      sourceMap: true,
+      compress: {
+        warnings: false
+      }
+    }),
     new webpack.LoaderOptionsPlugin({
       minimize: true
     })
   ])
 } else {
-  config.plugins = (config.plugins || []).concat([
+  module.exports.plugins = (module.exports.plugins || []).concat([
+    new CopyWebpackPlugin([
+      { from: 'assets', to: 'assets' },
+      { from: 'options/index.html', to: 'options/index.html' },
+      { from: 'popup/index.html', to: 'popup/index.html' },
+      { from: 'manifest.json', to: 'manifest.json' }
+    ]),
     new ChromeExtensionReloader({
       entries: {
         background: 'background',
@@ -81,5 +105,3 @@ if (process.env.NODE_ENV === 'production') {
     })
   ])
 }
-
-module.exports = config
