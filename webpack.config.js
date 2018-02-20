@@ -11,9 +11,9 @@ module.exports = {
   entry: {
     vue: 'vue/dist/vue.runtime.esm.js',
     bulma: 'bulma/css/bulma.css',
-    background: './background/index.js',
     options: './options/index.js',
     popup: './popup/index.js',
+    background: './background/index.js',
     'contentScripts/index': './contentScripts/index.js'
   },
   output: {
@@ -80,7 +80,8 @@ module.exports = {
       filename: 'popup.html'
     }),
     new webpack.optimize.CommonsChunkPlugin({
-      names: ['vue', 'bulma']
+      names: ['bulma', 'vue'],
+      chunks: ['options', 'popup']
     })
   ]
 }
