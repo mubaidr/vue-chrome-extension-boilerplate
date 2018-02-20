@@ -2,11 +2,12 @@
 
 Boilerplate for Chrome extension using Vue.js and Webpack with hot reloading enabled and Bulam included for styling popup & options pages.
 
-## Included
+## Frameworks and libraries
 
-Vue.js
-Stylus
-Bulma
+- Vue.js
+- Stylus
+- Bulma
+- Webpack for dev and build
 
 ## Scripts
 
