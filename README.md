@@ -1,6 +1,6 @@
 # vue-chrome-extension-boilerplate
 
-Boilerplate for Chrome extension using Vue.js and Webpack with hot reloading enabled
+Boilerplate for Chrome extension using Vue.js and Webpack with hot reloading enabled and Bulam included for styling popup & options pages.
 
 ## Scripts
 
