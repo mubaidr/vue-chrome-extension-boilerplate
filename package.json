@@ -4,13 +4,11 @@
   "description": "vue-chrome-extension-boilerplate",
   "author": "Muhammad Ubaid Raza <mubaidr@gmail.com>",
   "scripts": {
-    "dev":
-      "cross-env NODE_ENV=development webpack --progress --hide-modules --hot --watch",
-    "build":
-      "cross-env NODE_ENV=production webpack --progress --hide-modules && node scripts/build-zip.js"
+    "dev": "cross-env NODE_ENV=development webpack --progress --hide-modules --hot --watch",
+    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules && node scripts/build-zip.js"
   },
   "dependencies": {
-    "bulma": "0.6.2",
+    "buefy": "^0.6.3",
     "vue": "^2.5.13"
   },
   "devDependencies": {
