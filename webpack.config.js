@@ -76,11 +76,6 @@ module.exports = {
       inject: true,
       chunks: ['manifest', 'vendor', 'popup'],
       filename: 'popup.html'
-    }),
-    new webpack.optimize.CommonsChunkPlugin({
-      names: ['manifest', 'bulma', 'vue'],
-      filename: 'vendor.js',
-      chunks: ['options', 'popup']
     })
   ]
 }
@@ -91,15 +86,6 @@ if (process.env.NODE_ENV === 'production') {
       'process.env': {
         NODE_ENV: '"production"'
       }
-    }),
-    new webpack.optimize.UglifyJsPlugin({
-      sourceMap: true,
-      compress: {
-        warnings: false
-      }
-    }),
-    new webpack.LoaderOptionsPlugin({
-      minimize: true
     })
   ])
 } else {
