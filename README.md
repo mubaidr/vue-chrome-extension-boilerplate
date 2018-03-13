@@ -1,5 +1,7 @@
 # vue-chrome-extension-boilerplate
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/mubaidr/vue-chrome-extension-boilerplate.svg)](https://greenkeeper.io/)
+
 Boilerplate for Chrome extension using Vue.js and Webpack with hot reloading enabled.
 
 ## Frameworks and libraries
