@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "buefy": "^0.6.6",
-    "vue": "^2.5.13"
+    "vue": "^2.5.16"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
