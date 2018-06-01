@@ -8,7 +8,7 @@
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules && node scripts/build-zip.js"
   },
   "dependencies": {
-    "buefy": "^0.6.3",
+    "buefy": "^0.6.6",
     "vue": "^2.5.13"
   },
   "devDependencies": {
