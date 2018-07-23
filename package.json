@@ -28,7 +28,7 @@
     "stylus-loader": "^3.0.2",
     "uglifyjs-webpack-plugin": "^1.2.7",
     "vue-loader": "^15.2.4",
-    "vue-style-loader": "^4.1.0",
+    "vue-style-loader": "^4.1.1",
     "vue-template-compiler": "^2.5.16",
     "webpack": "^4.16.1",
     "webpack-chrome-extension-reloader": "^0.8.3",
