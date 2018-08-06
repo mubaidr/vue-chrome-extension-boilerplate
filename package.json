@@ -29,7 +29,7 @@
     "uglifyjs-webpack-plugin": "^1.2.7",
     "vue-loader": "^15.2.6",
     "vue-style-loader": "^4.1.1",
-    "vue-template-compiler": "^2.5.16",
+    "vue-template-compiler": "^2.5.17",
     "webpack": "^4.16.5",
     "webpack-chrome-extension-reloader": "^0.8.3",
     "webpack-cli": "^3.1.0",
