@@ -1,7 +1,7 @@
 {
   "author": "Muhammad Ubaid Raza <mubaidr@gmail.com>",
   "dependencies": {
-    "buefy": "^0.6.6",
+    "buefy": "^0.6.7",
     "vue": "^2.5.17"
   },
   "description": "vue-chrome-extension-boilerplate",
