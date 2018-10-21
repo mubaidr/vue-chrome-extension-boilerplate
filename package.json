@@ -11,7 +11,7 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-stage-3": "^6.24.1",
     "clean-webpack-plugin": "^0.1.19",
-    "copy-webpack-plugin": "^4.5.3",
+    "copy-webpack-plugin": "^4.5.4",
     "cross-env": "^5.2.0",
     "css-loader": "^0.28.11",
     "eslint": "^5.7.0",
