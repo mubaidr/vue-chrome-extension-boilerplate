@@ -2,7 +2,7 @@
   "author": "Muhammad Ubaid Raza <mubaidr@gmail.com>",
   "dependencies": {
     "buefy": "^0.7.1",
-    "vue": "^2.5.17"
+    "vue": "^2.5.19"
   },
   "description": "vue-chrome-extension-boilerplate",
   "devDependencies": {
