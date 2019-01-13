@@ -2,7 +2,7 @@
   "author": "Muhammad Ubaid Raza <mubaidr@gmail.com>",
   "dependencies": {
     "buefy": "^0.7.1",
-    "vue": "^2.5.21"
+    "vue": "^2.5.22"
   },
   "description": "vue-chrome-extension-boilerplate",
   "devDependencies": {
@@ -29,7 +29,7 @@
     "uglifyjs-webpack-plugin": "^2.1.1",
     "vue-loader": "^15.5.0",
     "vue-style-loader": "^4.1.2",
-    "vue-template-compiler": "^2.5.21",
+    "vue-template-compiler": "^2.5.22",
     "webpack": "^4.28.3",
     "webpack-chrome-extension-reloader": "^1.1.1",
     "webpack-cli": "^3.2.0",
