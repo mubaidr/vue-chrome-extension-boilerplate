@@ -4552,9 +4552,9 @@ watchpack@^1.5.0:
     graceful-fs "^4.1.2"
     neo-async "^2.5.0"
 
-webpack-chrome-extension-reloader@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/webpack-chrome-extension-reloader/-/webpack-chrome-extension-reloader-1.1.1.tgz#0529de28b99a89a53f36a5324b4610d9cc1725f8"
+webpack-chrome-extension-reloader@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/webpack-chrome-extension-reloader/-/webpack-chrome-extension-reloader-1.1.2.tgz#ba920bf308346f70762b85c004310a985b6f0157"
   dependencies:
     colors "^1.1.2"
     lodash "^4.17.4"
