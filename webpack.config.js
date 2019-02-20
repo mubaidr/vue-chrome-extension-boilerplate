@@ -1,13 +1,12 @@
 const path = require('path')
 const webpack = require('webpack')
-const WebpackShellPlugin = require('webpack-shell-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const ChromeExtensionReloader = require('webpack-chrome-extension-reloader')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
-module.exports = {
+const config = {
   context: path.resolve(__dirname, './src'),
   entry: {
     options: './options/index.js',
@@ -29,15 +28,23 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        exclude: /node_modules/,
+        exclude: /(node_modules|bower_components)/,
+      },
+      {
+        test: /\.scss$/,
+        use: ['vue-style-loader', 'css-loader', 'sass-loader'],
+      },
+      {
+        test: /\.sass$/,
+        use: ['vue-style-loader', 'css-loader', 'sass-loader?indentedSyntax'],
       },
       {
         test: /\.styl$/,
-        use: ['style-loader', 'css-loader', 'stylus-loader'],
+        use: ['vue-style-loader', 'css-loader', 'stylus-loader'],
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
+        use: ['vue-style-loader', 'css-loader'],
       },
       {
         test: /\.(png|jpg|gif|svg)$/,
@@ -53,7 +60,7 @@ module.exports = {
       vue$: 'vue/dist/vue.runtime.esm.js',
       bulma$: 'bulma/css/bulma.css',
     },
-    extensions: ['.js'],
+    // extensions: ['.js'],
   },
   plugins: [
     new VueLoaderPlugin(),
@@ -62,9 +69,6 @@ module.exports = {
       { from: 'assets', to: 'assets' },
       { from: 'manifest.json', to: 'manifest.json', flatten: true },
     ]),
-    new WebpackShellPlugin({
-      onBuildEnd: ['node scripts/remove-evals.js'],
-    }),
     new HtmlWebpackPlugin({
       title: 'Options',
       template: './index.html',
@@ -82,16 +86,8 @@ module.exports = {
   ],
 }
 
-if (process.env.NODE_ENV === 'production') {
-  module.exports.plugins = (module.exports.plugins || []).concat([
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: '"production"',
-      },
-    }),
-  ])
-} else {
-  module.exports.plugins = (module.exports.plugins || []).concat([
+if (process.env.NODE_ENV !== 'production') {
+  config.plugins.push(
     new webpack.HotModuleReplacementPlugin(),
     new ChromeExtensionReloader({
       entries: {
@@ -100,6 +96,8 @@ if (process.env.NODE_ENV === 'production') {
         popup: 'popup',
         contentScripts: 'contentScripts/index',
       },
-    }),
-  ])
+    })
+  )
 }
+
+module.exports = config
