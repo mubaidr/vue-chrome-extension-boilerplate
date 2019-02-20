@@ -5,8 +5,8 @@ Boilerplate for Chrome extension using Vue.js and Webpack with hot reloading ena
 ## Frameworks and libraries
 
 - Vue.js
-- Stylus
-- Bulma
+- SASS/SCSS/Stylus
+- Bulma/Buefy
 - Webpack for dev and build
 
 ## Scripts
