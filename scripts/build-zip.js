@@ -3,7 +3,7 @@
 const fs = require('fs')
 const path = require('path')
 // eslint-disable-next-line
-const zipFolder = require('zip-folder')
+var archiver = require('archiver')
 
 const extPackageJson = require('../package.json')
 
@@ -12,7 +12,7 @@ const DEST_ZIP_DIR = path.join(__dirname, '../dist-zip')
 
 const extractExtensionData = () => ({
   name: extPackageJson.name,
-  version: extPackageJson.version
+  version: extPackageJson.version,
 })
 
 const makeDestZipDirIfNotExists = () => {
@@ -24,15 +24,11 @@ const makeDestZipDirIfNotExists = () => {
 const buildZip = (src, dist, zipFilename) => {
   console.info(`Building ${zipFilename}...`)
 
-  return new Promise((resolve, reject) => {
-    zipFolder(src, path.join(dist, zipFilename), err => {
-      if (err) {
-        reject(err)
-      } else {
-        resolve()
-      }
-    })
-  })
+  const output = fs.createWriteStream(path.join(dist, zipFilename))
+  const archive = archiver('zip')
+  archive.pipe(output)
+  archive.directory(src, false)
+  archive.finalize()
 }
 
 const main = () => {
@@ -42,8 +38,6 @@ const main = () => {
   makeDestZipDirIfNotExists()
 
   buildZip(DEST_DIR, DEST_ZIP_DIR, zipFilename)
-    .then(() => console.info('OK'))
-    .catch(console.err)
 }
 
 main()
