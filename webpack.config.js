@@ -13,6 +13,7 @@ const PurgecssPlugin = require('purgecss-webpack-plugin')
 const isDevMode = process.env.NODE_ENV === 'development'
 
 const config = {
+  devtool: isDevMode ? 'eval-source-map' : false,
   context: path.resolve(__dirname, './src'),
   entry: {
     options: './options/index.js',
