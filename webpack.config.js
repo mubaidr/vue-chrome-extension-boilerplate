@@ -1,10 +1,16 @@
 const path = require('path')
 const webpack = require('webpack')
+const fg = require('fast-glob')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const ChromeExtensionReloader = require('webpack-chrome-extension-reloader')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const PurgecssPlugin = require('purgecss-webpack-plugin')
+
+const isDevMode = process.env.NODE_ENV === 'development'
 
 const config = {
   context: path.resolve(__dirname, './src'),
@@ -12,7 +18,7 @@ const config = {
     options: './options/index.js',
     popup: './popup/index.js',
     background: './background/index.js',
-    'contentScripts/index': './contentScripts/index.js',
+    contentScripts: './contentScripts/index.js',
   },
   output: {
     path: path.resolve(__dirname, './dist'),
@@ -24,6 +30,9 @@ const config = {
       {
         test: /\.vue$/,
         loader: 'vue-loader',
+        options: {
+          extractCSS: !isDevMode,
+        },
       },
       {
         test: /\.js$/,
@@ -32,19 +41,34 @@ const config = {
       },
       {
         test: /\.scss$/,
-        use: ['vue-style-loader', 'css-loader', 'sass-loader'],
+        use: [
+          isDevMode ? 'vue-style-loader' : MiniCssExtractPlugin.loader,
+          'css-loader',
+          'sass-loader',
+        ],
       },
       {
         test: /\.sass$/,
-        use: ['vue-style-loader', 'css-loader', 'sass-loader?indentedSyntax'],
+        use: [
+          isDevMode ? 'vue-style-loader' : MiniCssExtractPlugin.loader,
+          'css-loader',
+          'sass-loader?indentedSyntax',
+        ],
       },
       {
         test: /\.styl$/,
-        use: ['vue-style-loader', 'css-loader', 'stylus-loader'],
+        use: [
+          isDevMode ? 'vue-style-loader' : MiniCssExtractPlugin.loader,
+          'css-loader',
+          'stylus-loader',
+        ],
       },
       {
         test: /\.css$/,
-        use: ['vue-style-loader', 'css-loader'],
+        use: [
+          isDevMode ? 'vue-style-loader' : MiniCssExtractPlugin.loader,
+          'css-loader',
+        ],
       },
       {
         test: /\.(png|jpg|gif|svg)$/,
@@ -72,21 +96,22 @@ const config = {
     new HtmlWebpackPlugin({
       title: 'Options',
       template: './index.html',
-      inject: true,
-      chunks: ['manifest', 'vendor', 'options'],
       filename: 'options.html',
+      chunks: ['options'],
     }),
     new HtmlWebpackPlugin({
       title: 'Popup',
       template: './index.html',
-      inject: true,
-      chunks: ['manifest', 'vendor', 'popup'],
       filename: 'popup.html',
+      chunks: ['popup'],
     }),
   ],
 }
 
-if (process.env.NODE_ENV !== 'production') {
+/**
+ * Adjust rendererConfig for production settings
+ */
+if (isDevMode) {
   config.plugins.push(
     new webpack.HotModuleReplacementPlugin(),
     new ChromeExtensionReloader({
@@ -97,6 +122,28 @@ if (process.env.NODE_ENV !== 'production') {
         contentScripts: 'contentScripts/index',
       },
     })
+  )
+} else {
+  config.plugins.push(
+    new ScriptExtHtmlWebpackPlugin({
+      async: [/runtime/],
+      defaultAttribute: 'defer',
+    }),
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+    }),
+    new PurgecssPlugin({
+      paths: fg.sync([`./src/**/*`], {
+        onlyFiles: true,
+        absolute: true,
+      }),
+    })
+    // new CopyWebpackPlugin([
+    //   {
+    //     from: path.join(__dirname, '../src/data'),
+    //     to: path.join(__dirname, '../dist/data'),
+    //   },
+    // ])
   )
 }
 

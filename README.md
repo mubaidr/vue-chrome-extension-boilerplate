@@ -1,20 +1,22 @@
-# vue-chrome-extension-boilerplate
+# Selection Popup
 
-Boilerplate for Chrome extension using Vue.js and Webpack with hot reloading enabled.
-
-## Frameworks and libraries
-
-- Vue.js
-- SASS/SCSS/Stylus
-- Bulma/Buefy
-- Webpack for dev and build
+Perform customizable actions (Search, Copy etc) on selected text.
 
 ## Scripts
 
 ```json
-// build extension zip to dist-zip/ folder, unpacked verison in dist/
+// build extension to dist folder
 npm run build
 
-// Start hot reloading server from dist/
-npm run dev
+// build extension to dist folder using dev config for webpack
+npm run build:dev
+
+// build extension zip to dist-zip folder
+npm run build-zip
+
+// build extension to dist folder and watch for changes
+npm run watch
+
+// build extension to dist folder using dev config for webpack and watch for changes
+npm run watch:dev
 ```
