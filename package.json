@@ -50,7 +50,7 @@
   },
   "scripts": {
     "build": "npm run pack && npm run remove-evals && npm run zip",
-    "dev": "webpack --mode=development --progress --hide-modules --hot --watch",
+    "dev": "webpack --mode=development --env.NODE_ENV=development --progress --hide-modules --hot --watch",
     "pack": "webpack --mode=production --env.NODE_ENV=production --progress --hide-modules",
     "remove-evals": "node scripts/remove-evals.js",
     "zip": "node scripts/build-zip.js",
