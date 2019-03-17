@@ -6,7 +6,7 @@
   },
   "dependencies": {
     "vue": "^2.6.9",
-    "vuedraggable": "^2.19.1"
+    "vuedraggable": "^2.19.2"
   },
   "description": "vue-chrome-extension-boilerplate",
   "devDependencies": {
