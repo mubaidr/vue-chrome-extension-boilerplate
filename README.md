@@ -1,22 +1,16 @@
-# Selection Popup
+# vue-chrome-extension-boilerplate
 
-Perform customizable actions (Search, Copy etc) on selected text.
+Boilerplate for Chrome extension using Vue.js and Webpack with Hot Reloading Enabled
 
 ## Scripts
 
 ```json
-// build extension to dist folder
+// build extension and watch for changes
+npm run dev
+
+// build extension zip
 npm run build
 
-// build extension to dist folder using dev config for webpack
-npm run build:dev
-
-// build extension zip to dist-zip folder
-npm run build-zip
-
-// build extension to dist folder and watch for changes
-npm run watch
-
-// build extension to dist folder using dev config for webpack and watch for changes
-npm run watch:dev
+// lint all source files
+npm run lint
 ```
