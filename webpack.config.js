@@ -89,7 +89,7 @@ const config = {
   },
   plugins: [
     new VueLoaderPlugin(),
-    new CleanWebpackPlugin(['./dist/', './dist-zip/']),
+    new CleanWebpackPlugin(),
     new CopyWebpackPlugin([
       { from: 'assets', to: 'assets' },
       { from: 'manifest.json', to: 'manifest.json', flatten: true },

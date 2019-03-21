@@ -23,7 +23,7 @@
   "manifest_version": 2,
   "name": "vue-chrome-extension-boilerplate",
   "options_ui": {
-    "chrome_style": true,
+    "chrome_style": false,
     "page": "./options.html"
   },
   "permissions": [

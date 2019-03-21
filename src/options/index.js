@@ -1,13 +1,10 @@
 import Vue from 'vue'
-import Buefy from 'buefy'
-import 'buefy/dist/buefy.css'
+import 'bulma-fluent/bulma.sass'
 
 import App from './App.vue'
-
-Vue.use(Buefy)
 
 // eslint-disable-next-line
 new Vue({
   el: '#app',
-  render: h => h(App)
+  render: h => h(App),
 })
