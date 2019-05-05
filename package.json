@@ -5,7 +5,7 @@
     "url": "https://mubaidr.github.io/"
   },
   "dependencies": {
-    "bulma-fluent": "^0.3.16",
+    "bulma-fluent": "^0.3.17",
     "vue": "^2.6.10"
   },
   "description": "vue-chrome-extension-boilerplate",
