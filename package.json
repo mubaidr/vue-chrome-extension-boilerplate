@@ -10,7 +10,7 @@
   },
   "description": "vue-chrome-extension-boilerplate",
   "devDependencies": {
-    "@babel/core": "^7.5.4",
+    "@babel/core": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
     "archiver": "^3.0.3",
     "babel-loader": "^8.0.6",
