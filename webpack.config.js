@@ -3,7 +3,7 @@ const webpack = require('webpack')
 const fg = require('fast-glob')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const ChromeExtensionReloader = require('webpack-chrome-extension-reloader')
+const ExtensionReloader = require('webpack-extension-reloader')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin')
@@ -117,13 +117,11 @@ const config = {
 if (isDevMode) {
   config.plugins.push(
     new webpack.HotModuleReplacementPlugin(),
-    new ChromeExtensionReloader({
-      entries: {
-        background: 'background',
-        options: 'options',
-        popup: 'popup',
-        contentScripts: 'contentScripts/index',
-      },
+    new ExtensionReloader({
+      contentScript: 'contentScripts',
+      background: 'background',
+      extensionPage: 'popup',
+      options: 'options',
     })
   )
 } else {
