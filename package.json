@@ -6,7 +6,7 @@
   },
   "dependencies": {
     "bulma-fluent": "^0.3.18",
-    "vue": "^2.6.10"
+    "vue": "^2.6.11"
   },
   "description": "vue-chrome-extension-boilerplate",
   "devDependencies": {
@@ -37,7 +37,7 @@
     "stylus-loader": "^3.0.2",
     "vue-loader": "^15.7.2",
     "vue-style-loader": "^4.1.2",
-    "vue-template-compiler": "^2.6.10",
+    "vue-template-compiler": "^2.6.11",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10",
     "webpack-extension-reloader": "^1.1.4"
