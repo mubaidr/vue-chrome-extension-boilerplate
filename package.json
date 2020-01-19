@@ -22,7 +22,7 @@
     "eslint-config-prettier": "^6.9.0",
     "eslint-plugin-import": "^2.20.0",
     "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-react": "^7.17.0",
+    "eslint-plugin-react": "^7.18.0",
     "eslint-plugin-vue": "^6.1.2",
     "fast-glob": "^2.2.7",
     "file-loader": "^4.3.0",
