@@ -19,7 +19,7 @@
     "css-loader": "^3.4.2",
     "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.1",
-    "eslint-config-prettier": "^6.9.0",
+    "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-import": "^2.20.0",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.18.0",
