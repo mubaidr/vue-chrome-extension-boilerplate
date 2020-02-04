@@ -1,7 +1,7 @@
 # vue-chrome-extension-boilerplate
 [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
 
-Boilerplate for Chrome extension using Vue.js and Webpack with Hot Reloading Enabled
+Boilerplate for Chrome extension using Vue.js and Webpack with auto-reload enabled.
 
 ## Scripts
 
