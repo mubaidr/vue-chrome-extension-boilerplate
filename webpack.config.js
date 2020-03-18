@@ -10,7 +10,7 @@ const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const PurgecssPlugin = require('purgecss-webpack-plugin')
 
-function cfgExport(env, argv) {
+function configFunc(env, argv) {
   const isDevMode = env.NODE_ENV === 'development'
   const config = {
     devtool: isDevMode ? 'eval-source-map' : false,
@@ -150,4 +150,4 @@ function cfgExport(env, argv) {
   return config
 }
 
-module.exports = cfgExport
+module.exports = configFunc
