@@ -14,11 +14,21 @@
         "infra",
         "code"
       ]
+    },
+    {
+      "login": "linkerGitHub",
+      "name": "linkerGitHub",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/15519222?v=4",
+      "profile": "https://github.com/linkerGitHub",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
   "projectName": "vue-chrome-extension-boilerplate",
   "projectOwner": "mubaidr",
   "repoType": "github",
-  "repoHost": "https://github.com"
+  "repoHost": "https://github.com",
+  "skipCi": true
 }
