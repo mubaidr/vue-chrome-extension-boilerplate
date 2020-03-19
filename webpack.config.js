@@ -10,6 +10,7 @@ const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const PurgecssPlugin = require('purgecss-webpack-plugin')
 
+// eslint-disable-next-line
 function configFunc(env, argv) {
   const isDevMode = env.NODE_ENV === 'development'
   const config = {
@@ -53,7 +54,11 @@ function configFunc(env, argv) {
           use: [
             isDevMode ? 'vue-style-loader' : MiniCssExtractPlugin.loader,
             'css-loader',
-            'sass-loader?indentedSyntax',
+            {
+              loader: 'sass-loader',
+              // eslint-disable-next-line
+              options: { implementation: require('sass') },
+            },
           ],
         },
         {
