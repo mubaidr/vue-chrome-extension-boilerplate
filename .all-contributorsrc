@@ -23,6 +23,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "andrewmackie",
+      "name": "Andrew Mackie",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/1217203?v=4",
+      "profile": "https://github.com/andrewmackie",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,

@@ -30,6 +30,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tr>
     <td align="center"><a href="https://github.com/stealthleads"><img src="https://avatars0.githubusercontent.com/u/57643807?v=4" width="100px;" alt=""/><br /><sub><b>stealthleads</b></sub></a><br /><a href="#infra-stealthleads" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="https://github.com/mubaidr/vue-chrome-extension-boilerplate/commits?author=stealthleads" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/linkerGitHub"><img src="https://avatars3.githubusercontent.com/u/15519222?v=4" width="100px;" alt=""/><br /><sub><b>linkerGitHub</b></sub></a><br /><a href="https://github.com/mubaidr/vue-chrome-extension-boilerplate/commits?author=linkerGitHub" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/andrewmackie"><img src="https://avatars1.githubusercontent.com/u/1217203?v=4" width="100px;" alt=""/><br /><sub><b>Andrew Mackie</b></sub></a><br /><a href="https://github.com/mubaidr/vue-chrome-extension-boilerplate/commits?author=andrewmackie" title="Documentation">📖</a></td>
   </tr>
 </table>
 
