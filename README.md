@@ -6,6 +6,9 @@ Boilerplate for Chrome extension using Vue.js and Webpack with auto-reload enabl
 ## Scripts
 
 ```json
+// install dependencies
+npm install
+
 // build extension and watch for changes
 npm run dev
 
