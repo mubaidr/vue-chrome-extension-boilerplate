@@ -24,7 +24,7 @@ function configFunc(env, argv) {
     },
     output: {
       path: path.resolve(__dirname, './dist'),
-      publicPath: '.',
+      publicPath: './',
       filename: '[name].js',
     },
     module: {
@@ -81,6 +81,7 @@ function configFunc(env, argv) {
           loader: 'file-loader',
           options: {
             name: '[name].[ext]?[hash]',
+            esModule: false
           },
         },
       ],
