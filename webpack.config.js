@@ -8,7 +8,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const PurgecssPlugin = require('purgecss-webpack-plugin')
 
 // eslint-disable-next-line
 function configFunc(env, argv) {
@@ -81,7 +80,7 @@ function configFunc(env, argv) {
           loader: 'file-loader',
           options: {
             name: '[name].[ext]?[hash]',
-            esModule: false
+            esModule: false,
           },
         },
       ],
@@ -98,10 +97,12 @@ function configFunc(env, argv) {
       new CleanWebpackPlugin({
         cleanStaleWebpackAssets: false,
       }),
-      new CopyWebpackPlugin([
-        { from: 'assets', to: 'assets' },
-        { from: 'manifest.json', to: 'manifest.json', flatten: true },
-      ]),
+      new CopyWebpackPlugin({
+        patterns: [
+          { from: 'assets', to: 'assets' },
+          { from: 'manifest.json', to: 'manifest.json', flatten: true },
+        ],
+      }),
       new HtmlWebpackPlugin({
         title: 'Options',
         template: './index.html',
@@ -138,19 +139,14 @@ function configFunc(env, argv) {
       }),
       new MiniCssExtractPlugin({
         filename: '[name].css',
-      }),
-      new PurgecssPlugin({
-        paths: fg.sync([`./src/**/*`], {
-          onlyFiles: true,
-          absolute: true,
-        }),
       })
-      // new CopyWebpackPlugin([
+      // new CopyWebpackPlugin({
+      // patterns: [
       //   {
       //     from: path.join(__dirname, '../src/data'),
       //     to: path.join(__dirname, '../dist/data'),
       //   },
-      // ])
+      // ]})
     )
   }
   return config
