@@ -5,7 +5,7 @@ const path = require('path')
 // eslint-disable-next-line
 var archiver = require('archiver')
 
-const extPackageJson = require('../package.json')
+const extPackageJson = require('../src/manifest.json')
 
 const DEST_DIR = path.join(__dirname, '../dist')
 const DEST_ZIP_DIR = path.join(__dirname, '../dist-zip')
