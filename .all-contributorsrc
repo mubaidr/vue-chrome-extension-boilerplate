@@ -32,6 +32,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "hankxdev",
+      "name": "Hank X",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/3389447?v=4",
+      "profile": "https://momane.com",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
