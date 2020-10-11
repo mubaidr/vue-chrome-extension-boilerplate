@@ -15,7 +15,7 @@
     "archiver": "^4.0.2",
     "babel-loader": "^8.1.0",
     "clean-webpack-plugin": "^3.0.0",
-    "copy-webpack-plugin": "^6.0.3",
+    "copy-webpack-plugin": "^6.2.1",
     "css-loader": "^3.6.0",
     "eslint": "^7.4.0",
     "eslint-config-airbnb": "^18.2.0",
