@@ -125,10 +125,12 @@ function configFunc(env, argv) {
     config.plugins.push(
       new webpack.HotModuleReplacementPlugin(),
       new ExtensionReloader({
-        contentScript: 'contentScripts',
-        background: 'background',
-        extensionPage: 'popup',
-        options: 'options',
+        entries: {
+          contentScript: 'contentScripts',
+          background: 'background',
+          extensionPage: 'popup',
+          options: 'options',
+        }
       })
     )
   } else {
