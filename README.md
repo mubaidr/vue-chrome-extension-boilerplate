@@ -1,25 +1,26 @@
 # vue-chrome-extension-boilerplate
+
 ![Node.js CI](https://github.com/mubaidr/vue-chrome-extension-boilerplate/workflows/Node.js%20CI/badge.svg)[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
 
-Boilerplate for Chrome extension using Vue.js and Webpack with auto-reload enabled.
+Boilerplate for Chrome extension using Vue.js and Webpack with hot-reload enabled.
 
 ## Scripts
 
-// install dependencies
+Install dependencies:
 
-npm install
+`npm install`
 
-// build extension and watch for changes
+Build extension and watch for changes:
 
-npm run dev
+`npm run dev`
 
-// build extension zip
+Build extension zip:
 
-npm run build
+`npm run build`
 
-// lint all source files
+Lint all source files:
 
-npm run lint
+`npm run lint`
 
 ## Contributors ✨
 
@@ -39,6 +40,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
