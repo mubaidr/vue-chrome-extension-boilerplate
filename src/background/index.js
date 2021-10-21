@@ -2,17 +2,17 @@ let settings = {
   isEnabled: true,
 }
 
-// dfault settings for development enviroment
+// default settings for development environment
 if (process.env.NODE_ENV === 'development') {
   settings = {
     isEnabled: true,
   }
 
-  console.info('Extension initiliazed with settings: ', settings)
+  console.info('Extension initialized with settings: ', settings)
 }
 
 function loadSettings() {
-  chrome.storage.sync.get(items => {
+  chrome.storage.sync.get((items) => {
     if (items.settings) settings = items.settings
   })
 }
@@ -25,7 +25,7 @@ function saveSettings(updated) {
   })
 }
 
-chrome.runtime.onMessage.addListener(message => {
+chrome.runtime.onMessage.addListener((message) => {
   if (!settings.isEnabled) return
 
   console.log(message, settings)

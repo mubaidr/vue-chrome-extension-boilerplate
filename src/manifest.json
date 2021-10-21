@@ -13,6 +13,7 @@
       "run_at": "document_end"
     }
   ],
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
   "description": "vue-chrome-extension-boilerplate",
   "icons": {
     "16": "assets/icons/icon_16.png",
@@ -26,14 +27,6 @@
     "chrome_style": false,
     "page": "./options.html"
   },
-  "permissions": [
-    "http://*/*",
-    "https://*/*",
-    "background",
-    "storage",
-    "tabs",
-    "webRequest"
-  ],
-  "version": "1.0.0",
-  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+  "permissions": ["http://*/*", "https://*/*", "storage", "tabs", "webRequest"],
+  "version": "1.0.0"
 }

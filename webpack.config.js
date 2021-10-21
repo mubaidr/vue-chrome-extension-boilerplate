@@ -1,13 +1,11 @@
 const path = require('path')
 const webpack = require('webpack')
-const fg = require('fast-glob')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const ExtensionReloader = require('webpack-extension-reloader')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 // eslint-disable-next-line
 function configFunc(env, argv) {
@@ -42,16 +40,12 @@ function configFunc(env, argv) {
         },
         {
           test: /\.scss$/,
-          use: [
-            isDevMode ? 'vue-style-loader' : MiniCssExtractPlugin.loader,
-            'css-loader',
-            'sass-loader',
-          ],
+          use: ['vue-style-loader', 'css-loader', 'sass-loader'],
         },
         {
           test: /\.sass$/,
           use: [
-            isDevMode ? 'vue-style-loader' : MiniCssExtractPlugin.loader,
+            'vue-style-loader',
             'css-loader',
             {
               loader: 'sass-loader',
@@ -61,19 +55,8 @@ function configFunc(env, argv) {
           ],
         },
         {
-          test: /\.styl$/,
-          use: [
-            isDevMode ? 'vue-style-loader' : MiniCssExtractPlugin.loader,
-            'css-loader',
-            'stylus-loader',
-          ],
-        },
-        {
           test: /\.css$/,
-          use: [
-            isDevMode ? 'vue-style-loader' : MiniCssExtractPlugin.loader,
-            'css-loader',
-          ],
+          use: ['vue-style-loader', 'css-loader'],
         },
         {
           test: /\.(png|jpg|gif|svg)$/,
@@ -130,7 +113,7 @@ function configFunc(env, argv) {
           background: 'background',
           extensionPage: 'popup',
           options: 'options',
-        }
+        },
       })
     )
   } else {
@@ -138,17 +121,7 @@ function configFunc(env, argv) {
       new ScriptExtHtmlWebpackPlugin({
         async: [/runtime/],
         defaultAttribute: 'defer',
-      }),
-      new MiniCssExtractPlugin({
-        filename: '[name].css',
       })
-      // new CopyWebpackPlugin({
-      // patterns: [
-      //   {
-      //     from: path.join(__dirname, '../src/data'),
-      //     to: path.join(__dirname, '../dist/data'),
-      //   },
-      // ]})
     )
   }
   return config
