@@ -5,7 +5,6 @@ Boilerplate for Chrome extension using Vue.js and Webpack with auto-reload enabl
 
 ## Scripts
 
-```json
 // install dependencies
 npm install
 
@@ -17,7 +16,6 @@ npm run build
 
 // lint all source files
 npm run lint
-```
 
 ## Contributors ✨
 
