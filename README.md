@@ -1,4 +1,4 @@
-# Check this new & updated boiler plate: [vite-vue3-chrome-extension-v3](https://github.com/mubaidr/vite-vue3-chrome-extension-v3)
+# !!! Moved to: [vite-vue3-chrome-extension-v3](https://github.com/mubaidr/vite-vue3-chrome-extension-v3) !!!
 
 # vue-chrome-extension-boilerplate
 
