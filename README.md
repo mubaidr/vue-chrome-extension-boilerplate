@@ -1,4 +1,4 @@
-# !!! Moved to: [vite-vue3-chrome-extension-v3](https://github.com/mubaidr/vite-vue3-chrome-extension-v3) !!!
+# Deprecated! Please consider: [vite-vue3-chrome-extension-v3](https://github.com/mubaidr/vite-vue3-chrome-extension-v3)
 
 # vue-chrome-extension-boilerplate
 
